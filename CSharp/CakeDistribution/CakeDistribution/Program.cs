@@ -7,31 +7,20 @@ namespace CakeDistribution
 {
     internal class Program
     {
+        private const String StackBadgerServerAddress = "cake.stackbadger.net:50051";
+        private const String LocalHostAddress = "localhost:50051";
+        
         public static void Main(string[] args)
-        {
-            // Channel channel = new Channel("cake.stackbadger.net:50051", ChannelCredentials.Insecure);
-            Channel channel;
-            try
-            {
-                channel = new Channel("localhost:50051", ChannelCredentials.Insecure);
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                return;
-            }
-
-            var greeter = new CakeDistributer.CakeDistributerClient(channel);
+        { 
             String user = "john";
+            
+            Channel channel = new Channel(StackBadgerServerAddress, ChannelCredentials.Insecure);
+            var greeter = new CakeDistributer.CakeDistributerClient(channel);
 
             NameMessage message = new NameMessage {Name = user};
-            var a = new NameMessage();
-            a.Name = "badgers";
 
             var reply = greeter.SayHello(message);
-            // var reply = greeter.SayHello(a);
-                
-            Console.WriteLine("Greeting: " + reply.Message);
+            Console.WriteLine(reply.Message);
 
             channel.ShutdownAsync().Wait();
             Console.WriteLine("Press any key to exit...");
