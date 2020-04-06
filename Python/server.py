@@ -23,7 +23,9 @@ class Greeter(cake_pb2_grpc.CakeDistributerServicer):
 
         message = f"Wow you get {pieces_of_cake} pieces of cake"
 
-        response = cake_pb2.AmountOfCakeMessage(numberOfCakes=pieces_of_cake, message=message)
+        response = cake_pb2.AmountOfCakeMessage(numberOfCakes=pieces_of_cake,
+                                                message=message,
+                                                numberOfPiecesOfCakeYouOweMark=10)
 
         return response
 
