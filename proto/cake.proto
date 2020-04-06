@@ -19,10 +19,10 @@ option java_package = "net.stackbadger.cake";
 option java_outer_classname = "StackBadgerCake";
 option objc_class_prefix = "SB";
 
-package helloworld;
+package cake;
 
 // The greeting service definition.
-service Greeter {
+service CakeDistributer {
   // Sends a greeting
   rpc SayHello (NameMessage) returns (AmountOfCakeMessage) {}
 }

@@ -9,7 +9,7 @@ import cake_pb2_grpc
 
 def run():
     with grpc.insecure_channel('localhost:50051') as channel:
-        stub = cake_pb2_grpc.GreeterStub(channel)
+        stub = cake_pb2_grpc.CakeDistributerStub(channel)
         response = stub.SayHello(cake_pb2.NameMessage(name='nelson'))
 
     print(response.message)

@@ -7,7 +7,7 @@ import cake_pb2
 import cake_pb2_grpc
 
 
-class Greeter(cake_pb2_grpc.GreeterServicer):
+class Greeter(cake_pb2_grpc.CakeDistributerServicer):
 
     people_who_get_extra_cake = {"john": 2,
                                  "nelson": 2,
@@ -30,7 +30,7 @@ class Greeter(cake_pb2_grpc.GreeterServicer):
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
-    cake_pb2_grpc.add_GreeterServicer_to_server(Greeter(), server)
+    cake_pb2_grpc.add_CakeDistributerServicer_to_server(Greeter(), server)
     server.add_insecure_port('[::]:50051')
     server.start()
     server.wait_for_termination()
