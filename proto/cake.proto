@@ -36,4 +36,5 @@ message NameMessage {
 message AmountOfCakeMessage {
   int32 numberOfCakes = 1;
   string message = 2;
+  int32 numberOfPiecesOfCakeYouOweMark = 3;
 }

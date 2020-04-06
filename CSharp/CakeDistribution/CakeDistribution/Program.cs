@@ -21,6 +21,7 @@ namespace CakeDistribution
 
             var reply = greeter.SayHello(message);
             Console.WriteLine(reply.Message);
+            Console.WriteLine(reply.NumberOfPiecesOfCakeYouOweMark);
 
             channel.ShutdownAsync().Wait();
             Console.WriteLine("Press any key to exit...");
