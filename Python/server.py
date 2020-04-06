@@ -17,7 +17,7 @@ class Greeter(cake_pb2_grpc.GreeterServicer):
     def SayHello(self, request, context):
         caller = request.name
 
-        pieces_of_cake = 0
+        pieces_of_cake = 1
         if caller in self.people_who_get_extra_cake:
             pieces_of_cake += self.people_who_get_extra_cake[caller]
 
