@@ -13,7 +13,7 @@ namespace CakeDistributionDotNetCore
             { 
                 String user = "john";
             
-                Channel channel = new Channel(LocalHostAddress, ChannelCredentials.Insecure);
+                Channel channel = new Channel(StackBadgerServerAddress, ChannelCredentials.Insecure);
                 var greeter = new CakeDistributer.CakeDistributerClient(channel);
 
                 NameMessage message = new NameMessage {Name = user};
