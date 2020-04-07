@@ -25,6 +25,7 @@ package cake;
 service CakeDistributer {
   // Sends a greeting
   rpc SayHello (NameMessage) returns (AmountOfCakeMessage) {}
+  rpc StealAllTheCake(AmountOfCakeMessage) returns (NameMessage) {}
 }
 
 // The request message containing the user's name.

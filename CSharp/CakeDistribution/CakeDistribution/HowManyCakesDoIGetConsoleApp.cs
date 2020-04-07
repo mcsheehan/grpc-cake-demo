@@ -5,7 +5,7 @@ using Cake;
 
 namespace CakeDistribution
 {
-    internal class Program
+    internal class HowManyCakesDoIGetConsoleApp
     {
         private const String StackBadgerServerAddress = "cake.stackbadger.net:50051";
         private const String LocalHostAddress = "localhost:50051";

@@ -29,6 +29,9 @@ class Greeter(cake_pb2_grpc.CakeDistributerServicer):
 
         return response
 
+    def StealAllTheCake(self, request, context):
+        return super().StealAllTheCake(request, context)
+
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
