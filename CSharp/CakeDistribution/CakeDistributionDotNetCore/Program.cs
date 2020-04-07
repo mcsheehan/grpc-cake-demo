@@ -14,14 +14,13 @@ namespace CakeDistributionDotNetCore
                 String user = "john";
             
                 Channel channel = new Channel(StackBadgerServerAddress, ChannelCredentials.Insecure);
-                var greeter = new CakeDistributer.CakeDistributerClient(channel);
+                var cakeDistributer = new CakeDistributer.CakeDistributerClient(channel);
 
                 NameMessage message = new NameMessage {Name = user};
 
-                var reply = greeter.HowMuchCake(message);
+                var reply = cakeDistributer.HowMuchCake(message);
                 Console.WriteLine(reply.Message);
                 // Console.WriteLine(reply.NumberOfPiecesOfCakeYouOweMark);
-                new Channel(StackBadgerServerAddress, ChannelCredentials.Insecure).ShutdownAsync().Wait();
                 channel.ShutdownAsync().Wait();
                 Console.WriteLine("Press any key to exit...");
                 Console.ReadKey();
