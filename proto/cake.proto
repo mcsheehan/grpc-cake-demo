@@ -12,7 +12,7 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-syntax = "proto3";
+    syntax = "proto3";
 
 option java_multiple_files = true;
 option java_package = "net.stackbadger.cake";
@@ -24,8 +24,12 @@ package cake;
 // The greeting service definition.
 service CakeDistributer {
   // Sends a greeting
-  rpc SayHello (NameMessage) returns (AmountOfCakeMessage) {}
-  rpc StealAllTheCake(AmountOfCakeMessage) returns (NameMessage) {}
+  rpc HowMuchCake (NameMessage) returns (AmountOfCakeMessage) {}
+  rpc StealAllTheCake(NameMessage) returns (CakeStolenConfirmation) {}
+  rpc WhoHasTheMostCake(Empty) returns (MostCakeMessage) {}
+}
+
+message Empty {
 }
 
 // The request message containing the user's name.
@@ -38,4 +42,17 @@ message AmountOfCakeMessage {
   int32 numberOfCakes = 1;
   string message = 2;
   int32 numberOfPiecesOfCakeYouOweMark = 3;
+}
+
+message MoreCakeMessage{
+  string name = 1;
+  int32 moreCake = 2;
+}
+
+message CakeStolenConfirmation{
+}
+
+message MostCakeMessage{
+  string name = 1;
+  int32 amountOfCake = 2;
 }

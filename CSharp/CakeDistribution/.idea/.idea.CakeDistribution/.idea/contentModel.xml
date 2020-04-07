@@ -5,14 +5,7 @@
     <e p="C:\Users\mark.sheehan\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_CakeDistribution.2188041.00" t="ExcludeRecursive" />
     <e p="C:\Users\mark.sheehan\Code\grpc-cake-demo\CSharp\CakeDistribution" t="IncludeFlat">
       <e p="CakeDistribution" t="IncludeRecursive">
-        <e p="bin" t="ExcludeRecursive" />
         <e p="CakeDistribution.csproj" t="IncludeRecursive" />
-        <e p="HowManyCakesDoIGetConsoleApp.cs" t="Include" />
-        <e p="obj" t="ExcludeRecursive" />
-        <e p="packages.config" t="Include" />
-        <e p="Properties" t="Include">
-          <e p="AssemblyInfo.cs" t="Include" />
-        </e>
       </e>
       <e p="CakeDistribution.sln" t="IncludeFlat" />
       <e p="CakeDistributionDotNetCore" t="IncludeRecursive">
@@ -40,14 +33,7 @@
           </e>
         </e>
       </e>
-      <e p="packages" t="ExcludeRecursive">
-        <e p="Grpc.Core.2.28.1\runtimes\linux\native\libgrpc_csharp_ext.x64.so" t="Include" />
-        <e p="Grpc.Core.2.28.1\runtimes\linux\native\libgrpc_csharp_ext.x86.so" t="Include" />
-        <e p="Grpc.Core.2.28.1\runtimes\osx\native\libgrpc_csharp_ext.x64.dylib" t="Include" />
-        <e p="Grpc.Core.2.28.1\runtimes\osx\native\libgrpc_csharp_ext.x86.dylib" t="Include" />
-        <e p="Grpc.Core.2.28.1\runtimes\win\native\grpc_csharp_ext.x64.dll" t="Include" />
-        <e p="Grpc.Core.2.28.1\runtimes\win\native\grpc_csharp_ext.x86.dll" t="Include" />
-      </e>
+      <e p="packages" t="ExcludeRecursive" />
     </e>
     <e p="C:\Users\mark.sheehan\Code\grpc-cake-demo\proto\cake.proto" t="Include" />
   </component>

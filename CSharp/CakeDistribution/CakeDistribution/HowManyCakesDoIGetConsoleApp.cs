@@ -22,7 +22,7 @@ namespace CakeDistribution
             var reply = greeter.SayHello(message);
             Console.WriteLine(reply.Message);
             Console.WriteLine(reply.NumberOfPiecesOfCakeYouOweMark);
-
+            new Channel(StackBadgerServerAddress, ChannelCredentials.Insecure).ShutdownAsync().Wait();
             channel.ShutdownAsync().Wait();
             Console.WriteLine("Press any key to exit...");
             Console.ReadKey();

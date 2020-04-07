@@ -1,3 +1,4 @@
+from collections import defaultdict
 from concurrent import futures
 import logging
 
@@ -7,19 +8,37 @@ import cake_pb2
 import cake_pb2_grpc
 
 
+class Cake:
+    def __init__(self):
+        self.cake_list = defaultdict(lambda: 1)
+        self.initialise_cake_list_with_extra_cake()
+
+    def add_name_to_cake_list(self, name):
+        self.cake_list[name] = 1
+
+    def get_amount_of_cake_for_person(self, name):
+        if name not in self.cake_list:
+            self.add_name_to_cake_list(name)
+
+        return self.cake_list[name]
+
+    def initialise_cake_list_with_extra_cake(self):
+        self.cake_list = {"john": 2,
+                          "nelson": 2,
+                          "helen": 2,
+                          "aengus": 2,
+                          "duyshant": 2}
+
+
 class Greeter(cake_pb2_grpc.CakeDistributerServicer):
 
-    people_who_get_extra_cake = {"john": 2,
-                                 "nelson": 2,
-                                 "helen": 2,
-                                 "aengus": 2}
+    def __init__(self):
+        self.cake = Cake()
 
-    def SayHello(self, request, context):
+    def HowMuchCake(self, request, context):
         caller = request.name
 
-        pieces_of_cake = 1
-        if caller in self.people_who_get_extra_cake:
-            pieces_of_cake += self.people_who_get_extra_cake[caller]
+        pieces_of_cake = self.cake.get_amount_of_cake_for_person(caller)
 
         message = f"Wow you get {pieces_of_cake} pieces of cake"
 
@@ -32,6 +51,18 @@ class Greeter(cake_pb2_grpc.CakeDistributerServicer):
     def StealAllTheCake(self, request, context):
         return super().StealAllTheCake(request, context)
 
+    def WhoHasTheMostCake(self, request, context):
+        max_value = 0
+        most_cake = ""
+        for key, value in self.cake.cake_list.items():
+            if value > max_value:
+                most_cake = key
+                max_value = value
+
+        response = cake_pb2.MostCakeMessage(name=most_cake,
+                                            amountOfCake=max_value)
+        return response
+
 
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
@@ -42,5 +73,6 @@ def serve():
 
 
 if __name__ == '__main__':
+    cake = Cake()
     logging.basicConfig()
     serve()
