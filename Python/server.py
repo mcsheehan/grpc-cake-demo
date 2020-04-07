@@ -22,6 +22,12 @@ class Cake:
 
         return self.cake_list[name]
 
+    def set_amount_of_cake(self, name, amount):
+        if name not in self.cake_list:
+            self.add_name_to_cake_list(name)
+
+        self.cake_list[name] = amount
+
     def initialise_cake_list_with_extra_cake(self):
         self.cake_list = {"john": 2,
                           "nelson": 2,
@@ -34,6 +40,9 @@ class Greeter(cake_pb2_grpc.CakeDistributerServicer):
 
     def __init__(self):
         self.cake = Cake()
+
+    def ProvideCake(self, request, context):
+        return super().ProvideCake(request, context)
 
     def HowMuchCake(self, request, context):
         caller = request.name
@@ -49,7 +58,13 @@ class Greeter(cake_pb2_grpc.CakeDistributerServicer):
         return response
 
     def StealAllTheCake(self, request, context):
-        return super().StealAllTheCake(request, context)
+        cake_to_steal = self.cake.get_amount_of_cake_for_person(request.stealFromName)
+        current_cake = self.cake.get_amount_of_cake_for_person(request.stealToName)
+
+        self.cake.set_amount_of_cake(request.stealFromName, 0)
+        self.cake.set_amount_of_cake(request.stealToName, current_cake + cake_to_steal)
+
+        return  cake_pb2.CakeStolenConfirmation()
 
     def WhoHasTheMostCake(self, request, context):
         max_value = 0
